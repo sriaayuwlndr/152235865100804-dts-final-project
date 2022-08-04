@@ -16,8 +16,6 @@ const Content = ({items})=> {
         navigate(`/detail/${idSurah}/${namaSurah}`);
     }
 
-    // const [playSound] = useSound(items.audio);
-
     return (
         <Card id={items.nomor} sx={{ display: 'flex', width: 280, marginTop:3, marginLeft:1, marginRight:1, marginBottom:3}}>
             <CardMedia sx={{ width: 220, height: 200, paddingTop:1}}>
@@ -32,9 +30,12 @@ const Content = ({items})=> {
                     <Typography component="div" variant="h6">
                     {items.nama} ({items.ayat})
                     </Typography>
-                    <Box sx={{width: 200, alignItems: 'center'}}>
+                    <Box sx={{width: 200, alignItems: 'center', p:1}}>
                         {items.arti}
                     </Box>
+                    <Typography component="div" variant="h9">
+                        <u>{items.type}</u>
+                    </Typography>
                 </CardContent>
                 <Box sx={{ flexGrow: 1 }}>
                     <Grid container spacing={2}>
@@ -42,9 +43,6 @@ const Content = ({items})=> {
                         <Button variant="contained" endIcon={<VisibilityIcon />} onClick={() => viewSurah(items)} xs={{paddingButton: 5}}>
                         VIEW
                         </Button>
-                        {/* <Button variant="contained" endIcon={<PlayCircleOutlineIcon />} onClick={() => playSound()}>
-                        PLAY AUDIO
-                        </Button> */}
                     </Grid>
                     </Grid>
                 </Box>
