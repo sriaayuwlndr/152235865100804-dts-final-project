@@ -7,6 +7,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LoginPage from './containers/LoginPage';
 import RegisterPage from './containers/RegisterPage';
 import SurahPage from './containers/SurahPage';
+import ProtectedRoute from './containers/ProtectedRoute';
+import SuccessRegister from './containers/SuccessRegister';
+import NotFoundPage from './containers/NotFoundPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -14,9 +17,11 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}></Route>
-        <Route path="login" element={<LoginPage/>}></Route>
-        <Route path="register" element={<RegisterPage/>}></Route>
-        <Route path="detail/:id/:nama" element={<SurahPage></SurahPage>}></Route>
+        <Route path="login" element={<ProtectedRoute loginOnly={false}><LoginPage/></ProtectedRoute>}></Route>
+        <Route path="register" element={<ProtectedRoute loginOnly={false}><RegisterPage/></ProtectedRoute>}></Route>
+        <Route path="detail/:id/:nama" element={<ProtectedRoute><SurahPage></SurahPage></ProtectedRoute>}></Route>
+        <Route path="success" element={<SuccessRegister /> } />
+        <Route path="*" element={<NotFoundPage /> }></Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
