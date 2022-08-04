@@ -2,6 +2,8 @@ import React from 'react';
 import { Box, CardMedia, Card, Typography, CardContent, Button, Grid } from '@mui/material';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import { useNavigate } from 'react-router-dom';
+// import useSound from 'use-sound';
+// import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
 
 
 const Content = ({items})=> {
@@ -13,6 +15,8 @@ const Content = ({items})=> {
         const namaSurah = items.nama;
         navigate(`/detail/${idSurah}/${namaSurah}`);
     }
+
+    // const [playSound] = useSound(items.audio);
 
     return (
         <Card id={items.nomor} sx={{ display: 'flex', width: 280, marginTop:3, marginLeft:1, marginRight:1, marginBottom:3}}>
@@ -35,9 +39,12 @@ const Content = ({items})=> {
                 <Box sx={{ flexGrow: 1 }}>
                     <Grid container spacing={2}>
                     <Grid item xs={12}>
-                        <Button variant="contained" endIcon={<VisibilityIcon />} onClick={() => viewSurah(items)}>
+                        <Button variant="contained" endIcon={<VisibilityIcon />} onClick={() => viewSurah(items)} xs={{paddingButton: 5}}>
                         VIEW
                         </Button>
+                        {/* <Button variant="contained" endIcon={<PlayCircleOutlineIcon />} onClick={() => playSound()}>
+                        PLAY AUDIO
+                        </Button> */}
                     </Grid>
                     </Grid>
                 </Box>
